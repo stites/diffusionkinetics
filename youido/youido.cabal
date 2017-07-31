@@ -34,11 +34,10 @@ library
                      , microlens
                      , mtl
                      , random-fu
-                     , scotty
                      , postgresql-simple
-                     , wai-middleware-static
-                     , wai-extra
-                     , wai
+                     , snap
+                     , snap-core
+                     , snap-server
                      , aeson
                      , bytestring
                      , http-types
