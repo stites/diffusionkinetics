@@ -9,7 +9,7 @@
 # named .travis.yml
 
 # Use new container infrastructure to enable caching
-sudo: false
+sudo: required
 
 # Choose a lightweight base image; we provide our own build tools.
 language: generic
@@ -87,6 +87,10 @@ matrix:
     compiler: ": #stack 8.0.1"
     addons: {apt: {packages: [libgmp-dev, libblas-dev, libatlas-dev, liblapack-dev]}}
 
+  - env: BUILD=stack ARGS="--resolver lts-9"
+    compiler: ": #stack 8.0.1"
+    addons: {apt: {packages: [libgmp-dev, libblas-dev, libatlas-dev, liblapack-dev]}}
+
   # Nightly builds are allowed to fail
   - env: BUILD=stack ARGS="--resolver nightly"
     compiler: ": #stack nightly"
@@ -96,7 +100,6 @@ matrix:
   - env: BUILD=cabal GHCVER=7.8.4 CABALVER=1.18 HAPPYVER=1.19.5 ALEXVER=3.1.7
   - env: BUILD=cabal GHCVER=head  CABALVER=head HAPPYVER=1.19.5 ALEXVER=3.1.7
   - env: BUILD=stack ARGS="--resolver nightly"
-  - env: BUILD=stack ARGS="--resolver lts-7"
 
 before_install:
 # Using compiler above sets CC to an invalid value, so unset it
